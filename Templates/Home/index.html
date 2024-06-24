@@ -1,0 +1,168 @@
+<!-- templates/Home/index.html -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProSync - Comunidade Ativa de Programadores</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        .logo {
+            width: 150px;
+            border-radius: 50%;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #495057;
+            line-height: 1.6;
+        }
+
+        .logout-btn {
+            margin-top: 10px;
+        }
+
+        .logout-btn a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn a:hover {
+            background-color: #c82333;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 12px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+
+        .feature {
+            text-align: center;
+            max-width: 250px;
+        }
+
+        .feature img {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+
+        .feature p {
+            color: #495057;
+        }
+
+        .join-whatsapp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-content: center;
+            /* background-color: #0056b3; */
+            width: 100%;
+            height: 100%;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .join-whatsapp a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-content: center;
+            /* background-color: #0056b3; */
+            height: 100%;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        .join-whatsapp a>p {
+            /* background-color: #495057; */
+            margin: 0 auto;
+        }
+
+        .join-whatsapp a>img {
+            width: 40px;
+            /* background-color: #495057; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="{{ url_for('static', filename='Logo.png') }}" alt="Logo ProSync" class="logo">
+        <h1>Bem-vindo ao ProSync</h1>
+        <p>Comunidade Ativa de Programadores</p>
+
+        <div class="join-whatsapp">
+            <a href="https://chat.whatsapp.com/XYZ123" target="_blank">
+                <img src="{{ url_for('static', filename='join_whatsapp.png') }}" alt="Join WhatsApp Group">
+                <p>Entrar No Grupo</p>
+            </a>
+        </div>
+        
+        {% if 'logado' in session %}
+        <div class="login-status">
+            <p>Logado como: {{ session['logado']['email'] }}</p>
+            <div class="logout-btn">
+                <a href="{{ url_for('main.logout') }}">Logout</a>
+            </div>
+        </div>
+        {% else %}
+        <a href="{{ url_for('main.login') }}" class="btn btn-primary mt-5">Login</a>
+        {% endif %}
+    </div>
+
+    <!-- Scripts do Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

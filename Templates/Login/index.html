@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ProSync</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .form-signin {
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.5s ease;
+            animation-fill-mode: forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .sing-head {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .sing-head img {
+            width: 40%;
+            margin: 0 auto;
+            border-radius: 100%;
+        }
+
+        .sing-head h1 {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #007bff;
+        }
+
+        .form-signin label {
+            font-weight: bold;
+            color: #495057;
+        }
+
+        .form-signin input[type="email"],
+        .form-signin input[type="password"] {
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            padding: 12px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-signin input[type="email"]:focus,
+        .form-signin input[type="password"]:focus {
+            border-color: #007bff;
+        }
+
+        .form-signin button {
+            margin-top: 20px;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            background-color: #007bff;
+            border: none;
+            color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-signin button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-signin .checkbox {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-signin .checkbox label {
+            font-weight: normal;
+        }
+
+        .form-signin .forgot-password {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .alert-danger {
+          position: absolute;
+          right:5%;
+          top: 2%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-signin">
+        <div class="sing-head">
+            <img src="{{ url_for('static', filename='Logo.png') }}" />
+            <h1 class="h3 mb-3 font-weight-normal">Login - ProSync</h1>
+        </div>
+
+        {% if message %}
+        <div  class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+        {% endif %}
+    
+
+        <form method="POST" action="{{ url_for('main.login') }}">
+            <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Digite seu email"
+                    required autofocus>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" id="inputPassword" name="password" class="form-control"
+                    placeholder="Digite sua senha" required>
+            </div>
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me"> Lembrar-me
+                </label>
+            </div>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+
+            <div class="forgot-password">
+                <a href="#">Esqueceu a senha?</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Scripts do Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
